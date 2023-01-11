@@ -143,10 +143,11 @@ public class FtpInputFormat extends BaseRichInputFormat {
             reader = new FtpFileReader(ftpHandler, fileSplits.iterator(), ftpConfig, position);
             reader.setFromLine(0);
         }
-
         reader.setiFormatConfig(buildIFormatConfig(ftpConfig));
         reader.enableMetric(getRuntimeContext(), inputMetric);
         reader.skipHasReadFiles();
+
+        reader = null;
     }
 
     @Override
